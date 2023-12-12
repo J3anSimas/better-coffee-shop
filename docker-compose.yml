@@ -1,0 +1,14 @@
+services:
+  db:
+    build: 
+      context: .
+      dockerfile: DB.Dockerfile
+    ports:
+        - "3307:3306"
+    volumes:
+      - ./_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=coffeeshop
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=secret
