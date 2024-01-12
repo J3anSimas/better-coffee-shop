@@ -1,0 +1,25 @@
+<div
+  class="border-2 border-accent py-3 rounded-md flex flex-col justify-center items-center"
+>
+  <img src="{{.Image}}" alt="" class="w-32 h-32" />
+  <h2 class="text-center font-bold text-2xl font-title">{{.Price}}</h2>
+  <h2 class="text-center font-bold text-lg uppercase font-title">{{.Name}}</h2>
+  <div class="flex justify-center">
+    {{range .Rating}} {{if eq . true}}
+    <iconify-icon
+      icon="mdi:star"
+      width="32"
+      height="32"
+      class="text-secondary"
+    ></iconify-icon>
+
+    {{else}}
+    <iconify-icon
+      icon="mdi:star"
+      width="32"
+      height="32"
+      class="text-[#BABABA]"
+    ></iconify-icon>
+    {{end}} {{end}}
+  </div>
+</div>

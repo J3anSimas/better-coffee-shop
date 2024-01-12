@@ -1,10 +1,12 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 	"net/url"
 	"os"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 
@@ -31,5 +33,10 @@ func Logout(ctx *gin.Context) {
 	parameters.Add("client_id", os.Getenv("AUTH0_CLIENT_ID"))
 	logoutUrl.RawQuery = parameters.Encode()
 
+	session := sessions.Default(ctx)
+	session.Clear()
+	session.Save()
+	profile := session.Get("profile")
+	fmt.Println("profile", profile)
 	ctx.Redirect(http.StatusTemporaryRedirect, logoutUrl.String())
 }

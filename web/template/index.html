@@ -1,7 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-    {{template "head.html" .Title}}
-  <body>
-    <h1 class="bg-red-500 text-white">{{.Nickname}} é foda</h0>
+<!doctype html>
+<html data-theme="main" lang="en">
+  {{template "head.html" .Title}}
+  <body class="mx-auto w-full">
+    {{template "header.html" .}}
+    <div class="max-w-7xl mx-auto w-screen flex flex-col bg-background">
+      <div>
+        <img
+          src="https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/layout/4197/banner_img.jpg&w=1920&h=400&q=100"
+          alt=""
+          class="w-full h-36 object-center"
+        />
+      </div>
+      <div class="md:grid-cols-4 grid grid-cols-2 p-2 gap-3">
+        {{range .Coffees}} {{template "coffee_item.html" .}}{{end}}
+      </div>
+    </div>
   </body>
 </html>

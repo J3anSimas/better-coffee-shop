@@ -1,0 +1,49 @@
+<script>
+  function toggleSideBar() {
+    document.querySelector("aside").classList.toggle("hidden");
+  }
+</script>
+<header class="px-2 bg-primary flex justify-center w-full">
+  <div class="max-w-7xl flex justify-between items-center w-full">
+    <img src="/public/images/logo.svg" alt="" />
+    <nav class="flex justify-between items-center gap-4">
+      <a href="/" class="flex items-center">
+        <iconify-icon icon="mdi:cart" width="32" height="32"></iconify-icon>
+      </a>
+      <button
+        class="flex items-center justify-center md:hidden"
+        onclick="toggleSideBar()"
+      >
+        <iconify-icon icon="mdi:menu" width="32" height="32"></iconify-icon>
+      </button>
+      <span>
+        <a href="/login" class="items-center justify-center hidden md:block"
+          >Faça Login</a
+        >
+      </span>
+    </nav>
+  </div>
+</header>
+<aside class="hidden bg-secondary fixed top-0 h-screen w-full p-2">
+  <div class="flex justify-end">
+    <button onclick="toggleSideBar()" class="p-2">
+      <iconify-icon
+        icon="mdi:close"
+        width="32"
+        height="32"
+        class="text-white"
+      ></iconify-icon>
+    </button>
+  </div>
+  <nav class="">
+    <ul>
+      <li class="py-3 px-2 bg-accent rounded-md">
+        {{if eq .Nickname ""}}
+        <a href="/login" class="flex items-center">Faça Login</a>
+        {{else}}
+        <a href="/logout" class="flex items-center"> Faça Logout </a>
+        {{end}}
+      </li>
+    </ul>
+  </nav>
+</aside>
